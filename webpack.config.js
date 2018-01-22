@@ -1,11 +1,29 @@
 var webpack = require('webpack');
 var path = require('path');
 
+// Define our vendor libraries
+const VENDOR_LIBS = [
+  'faker',
+  'lodash',
+  'react',
+  'react-dom',
+  'react-input-range',
+  'react-redux',
+  'react-router',
+  'redux',
+  'redux-form',
+  'redux-thunk',
+]
+
 module.exports = {
-  entry: './src/index.js',
+  // using multiple entry points:
+  entry: {
+    bundle: './src/index.js', // generate bundle.js based on /src/index.js
+    vendor: VENDOR_LIBS // generate vendor.js based on our vendor libraries
+  },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: '[name].js' // name output file as the key from the entry section
   },
   module: {
     rules: [
