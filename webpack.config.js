@@ -24,7 +24,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].js' // name output file as the key from the entry section
+    filename: '[name].[chunkhash].js' // name output file as the key from the entry section, add a hash to create unique filename
   },
   module: {
     rules: [
@@ -43,7 +43,7 @@ module.exports = {
     // Look at our outputs...
     new webpack.optimize.CommonsChunkPlugin({
       // ...if any duplicates, only include them in vendor.js
-      name: 'vendor'
+      names: ['vendor', 'manifest'] // create manifest to tell if vendor file has changed
     }),
     new HtmlWebpackPlugin({
       template: 'src/index.html'
