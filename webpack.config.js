@@ -37,5 +37,12 @@ module.exports = {
         test: /\.css$/
       }
     ]
-  }
+  },
+  plugins: [
+    // Look at our outputs...
+    new webpack.optimize.CommonsChunkPlugin({
+      // ...if any duplicates, only include them in vendor.js
+      name: 'vendor'
+    })
+  ]
 };
