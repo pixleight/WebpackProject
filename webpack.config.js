@@ -6,5 +6,14 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        use: 'babel-loader',
+        test: /\.js$/,
+        exclude: /node_modules/, // do not try to apply babel to any files in 'node_modules' directory
+      }
+    ]
   }
 };
