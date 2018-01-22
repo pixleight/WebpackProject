@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // Define our vendor libraries
 const VENDOR_LIBS = [
@@ -43,6 +44,9 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       // ...if any duplicates, only include them in vendor.js
       name: 'vendor'
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
     })
   ]
 };
